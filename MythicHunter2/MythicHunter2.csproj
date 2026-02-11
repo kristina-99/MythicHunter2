@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Items\Armor.cs" />
     <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\Weapon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
