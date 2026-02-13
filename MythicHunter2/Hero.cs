@@ -75,5 +75,23 @@ namespace MythicHunter2
                 currentYposition = value;
             }
         }
+
+        public Hero()
+        {
+            power = 10;
+            mana = 5;
+            health = 20;
+            inventory = new List<Item>();
+            currentXposition = 0;
+            currentYposition = 0;
+        }
+
+        public void addItemToInventory(Item newItem)
+        {
+            inventory.Add(newItem);
+        }
+
+
+
     }
 }
