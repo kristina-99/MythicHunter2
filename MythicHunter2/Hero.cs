@@ -91,6 +91,18 @@ namespace MythicHunter2
             inventory.Add(newItem);
         }
 
+        public void useItem()
+        {
+            if (inventory.Count > 0)
+            {
+                Random rng = new Random();
+                int chosenItemIndex = rng.Next(0, inventory.Count - 1);
+
+                inventory[chosenItemIndex].ActivateSpecialEffect();
+
+            }
+        }
+
 
         public void Move(char inputKey)
         {
