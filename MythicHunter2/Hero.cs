@@ -78,12 +78,12 @@ namespace MythicHunter2
 
         public Hero()
         {
-            power = 10;
-            mana = 5;
-            health = 20;
+            this.Power = 10;
+            this.Mana = 5;
+            this.Health = 20;
             inventory = new List<Item>();
-            currentXposition = 0;
-            currentYposition = 0;
+            this.CurrentXPosition = 0;
+            this.currentYposition = 0;
         }
 
         public void addItemToInventory(Item newItem)

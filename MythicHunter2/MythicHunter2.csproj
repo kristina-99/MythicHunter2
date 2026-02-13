@@ -49,6 +49,7 @@
     <Compile Include="Items\Magic.cs" />
     <Compile Include="Items\Potion.cs" />
     <Compile Include="Items\Weapon.cs" />
+    <Compile Include="Monster.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
