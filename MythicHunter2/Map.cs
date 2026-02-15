@@ -40,7 +40,12 @@ namespace MythicHunter2
         public Map(int sizeY, int sizeX)
         { 
             this.GameMap = new char[sizeY, sizeX];
+            InitializeMap();
+            GenerateMapContents();
+        }
 
+        private void InitializeMap()
+        {
             for (int i = 0; i < this.GameMap.GetLength(0); i++)
             {
                 for (int j = 0; j < this.GameMap.GetLength(1); j++)
@@ -48,7 +53,10 @@ namespace MythicHunter2
                     this.GameMap[i, j] = '.';
                 }
             }
+        }
 
+        private void GenerateMapContents()
+        {
             //initial position of the Hero
             this.GameMap[0, 0] = 'H';
 
