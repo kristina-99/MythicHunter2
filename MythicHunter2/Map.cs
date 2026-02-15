@@ -44,6 +44,18 @@ namespace MythicHunter2
             GenerateMapContents();
         }
 
+        public void PrintMap()
+        {
+            for (int i = 0; i < gameMap.GetLength(0); i++)
+            {
+                for (int j = 0; j < gameMap.GetLength(1); j++)
+                {
+                    Console.Write(gameMap[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+
         private void InitializeMap()
         {
             for (int i = 0; i < this.GameMap.GetLength(0); i++)
