@@ -15,7 +15,7 @@ namespace MythicHunter2.Items
 
         public override void ActivateSpecialEffect(Hero hero)
         {
-            throw new NotImplementedException();
+            hero.Health += 5;
         }
     }
 }
