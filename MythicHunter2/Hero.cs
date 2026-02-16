@@ -156,6 +156,12 @@ namespace MythicHunter2
                         }
                         break;
                     }
+                default:
+                    {
+                        Console.WriteLine("\nIncorrect input. Please choose w, s, a or d");
+                        break;
+                    }
+
             }
 
         }
