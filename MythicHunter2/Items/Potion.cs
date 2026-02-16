@@ -13,9 +13,9 @@ namespace MythicHunter2.Items
 
         }
 
-        public override void ActivateSpecialEffect()
+        public override void ActivateSpecialEffect(Hero hero)
         {
-            throw new NotImplementedException();
+            hero.Mana += 7;
         }
     }
 }

@@ -54,6 +54,6 @@ namespace MythicHunter2.Items
             }
         }
 
-        public abstract void ActivateSpecialEffect();
+        public abstract void ActivateSpecialEffect(Hero hero);
     }
 }
