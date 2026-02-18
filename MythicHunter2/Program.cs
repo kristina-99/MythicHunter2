@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MythicHunter2.Items;
 
 namespace MythicHunter2
 {
@@ -13,7 +14,7 @@ namespace MythicHunter2
             bool gameOver = false;
             Map map = new Map();
             Hero hero = new Hero();
-
+            Random rng = new Random();
 
             while (!gameOver)
             {
@@ -40,12 +41,34 @@ namespace MythicHunter2
                     hero.CurrentXPosition = tempHeroCoordinatesX;
                     hero.CurrentYPosition = tempHeroCoordinatesY;
                 }
-                else
+                else if (map.GameMap[hero.CurrentYPosition, hero.CurrentXPosition] == '.')
                 {
                     map.GameMap[tempHeroCoordinatesY, tempHeroCoordinatesX] = '.';
                     map.GameMap[hero.CurrentYPosition, hero.CurrentXPosition] = 'H';
                 }
-
+                else if (map.GameMap[hero.CurrentYPosition, hero.CurrentXPosition] == 'I')
+                {
+                    int itemChoice = rng.Next(1, 5);
+                    switch (itemChoice)
+                    {
+                        case 1:
+                            Armor armor = new Armor();
+                            hero.addItemToInventory(armor);
+                            Console.WriteLine("Armor has been added to the inventory");
+                            break;
+                        case 2:
+                            Weapon weapon = new Weapon();
+                            hero.addItemToInventory(weapon);
+                            Console.WriteLine("Weapon has been added to the inventory");
+                            break;
+                        case 3:
+                            Magic magic = new Magic();
+                            hero.addItemToInventory(magic);
+                            Console.WriteLine("Magic has been added to the inventory");
+                            break;
+                        
+                    }
+                }
             }
         }
   

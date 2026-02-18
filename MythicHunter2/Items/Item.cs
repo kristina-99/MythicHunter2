@@ -9,13 +9,9 @@ namespace MythicHunter2.Items
     public abstract class Item
     {
         private string name;
-        private int positionY;
-        private int positionX;
 
-        public Item(int positionY, int PositionX)
+        public Item()
         { 
-            this.PositionY = positionY;
-            this.PositionX = PositionX;
         }
 
         public string Name

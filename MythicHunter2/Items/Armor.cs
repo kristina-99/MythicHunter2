@@ -8,7 +8,7 @@ namespace MythicHunter2.Items
 {
     public class Armor : Item
     {
-        public Armor(int positionY, int PositionX) : base(positionY, PositionX)
+        public Armor() : base()
         {
 
         }

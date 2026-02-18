@@ -8,7 +8,7 @@ namespace MythicHunter2.Items
 {
     public class Weapon : Item
     {
-        public Weapon(int positionY, int PositionX) : base(positionY, PositionX)
+        public Weapon() : base()
         {
 
         }

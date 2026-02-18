@@ -8,7 +8,7 @@ namespace MythicHunter2.Items
 {
     public class Magic : Item
     {
-        public Magic(int positionY, int PositionX) : base(positionY, PositionX)
+        public Magic() : base()
         {
 
         }

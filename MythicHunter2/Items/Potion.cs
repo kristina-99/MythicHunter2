@@ -8,7 +8,7 @@ namespace MythicHunter2.Items
 {
     public class Potion : Item
     {
-        public Potion(int positionY, int PositionX) : base(positionY, PositionX)
+        public Potion() : base()
         {
 
         }
