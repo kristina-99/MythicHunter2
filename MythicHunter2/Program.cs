@@ -50,9 +50,8 @@ namespace MythicHunter2
                 {
                     int itemChoice = rng.Next(1, 5);
 
-                    string enumTypeName = "MythicHunters2.Enums.Items";
-                    Type enumType = Type.GetType(enumTypeName);
-                    object enumValue = Enum.ToObject(enumType, itemChoice);
+                    Type enumType = Type.GetType("MythicHunter2.Items.Enumerations.Items");
+                    object enumValue = Enum.ToObject(enumType, itemChoice); 
                     hero.addItemToInventory((Item)enumValue);
                 }
             }

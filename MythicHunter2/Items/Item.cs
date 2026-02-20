@@ -26,29 +26,7 @@ namespace MythicHunter2.Items
             }
         }
         
-        public int PositionY
-        {
-            get 
-            {
-                return this.positionY;
-            }
-            set
-            {
-                this.positionY = value;
-            }
-        }
-
-        public int PositionX
-        {
-            get
-            {
-                return this.positionX;
-            }
-            set
-            { 
-                this.PositionX = value;
-            }
-        }
+        
 
         public abstract void ActivateSpecialEffect(Hero hero);
     }
