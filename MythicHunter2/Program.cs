@@ -49,25 +49,11 @@ namespace MythicHunter2
                 else if (map.GameMap[hero.CurrentYPosition, hero.CurrentXPosition] == 'I')
                 {
                     int itemChoice = rng.Next(1, 5);
-                    switch (itemChoice)
-                    {
-                        case 1:
-                            Armor armor = new Armor();
-                            hero.addItemToInventory(armor);
-                            Console.WriteLine("Armor has been added to the inventory");
-                            break;
-                        case 2:
-                            Weapon weapon = new Weapon();
-                            hero.addItemToInventory(weapon);
-                            Console.WriteLine("Weapon has been added to the inventory");
-                            break;
-                        case 3:
-                            Magic magic = new Magic();
-                            hero.addItemToInventory(magic);
-                            Console.WriteLine("Magic has been added to the inventory");
-                            break;
-                        
-                    }
+
+                    string enumTypeName = "MythicHunters2.Enums.Items";
+                    Type enumType = Type.GetType(enumTypeName);
+                    object enumValue = Enum.ToObject(enumType, itemChoice);
+                    hero.addItemToInventory((Item)enumValue);
                 }
             }
         }
