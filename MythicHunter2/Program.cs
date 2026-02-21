@@ -35,25 +35,44 @@ namespace MythicHunter2
 
                 hero.Move(Char.ToLower(userInput[0]));
 
+                char tempHeroTile = map.GameMap[tempHeroCoordinatesY, tempHeroCoordinatesX];
+                char currentHeroTile = map.GameMap[hero.CurrentYPosition, hero.CurrentXPosition];
+
                 //4.Check for a wall and revert to the previous position if needed
-                if (map.GameMap[hero.CurrentYPosition, hero.CurrentXPosition] == '#')
+                if (currentHeroTile == '#')
                 {
                     hero.CurrentXPosition = tempHeroCoordinatesX;
                     hero.CurrentYPosition = tempHeroCoordinatesY;
                 }
-                else if (map.GameMap[hero.CurrentYPosition, hero.CurrentXPosition] == '.')
+                else if (currentHeroTile == '.')
                 {
-                    map.GameMap[tempHeroCoordinatesY, tempHeroCoordinatesX] = '.';
-                    map.GameMap[hero.CurrentYPosition, hero.CurrentXPosition] = 'H';
+                    tempHeroTile = '.';
+                    currentHeroTile = 'H';
                 }
-                else if (map.GameMap[hero.CurrentYPosition, hero.CurrentXPosition] == 'I')
+                else if (currentHeroTile == 'I')
                 {
+                    tempHeroTile = '.';
+                    currentHeroTile = 'H';
                     int itemChoice = rng.Next(1, 5);
 
-                    Type enumType = Type.GetType("MythicHunter2.Items.Enumerations.Items");
-                    object enumValue = Enum.ToObject(enumType, itemChoice); 
-                    hero.addItemToInventory((Item)enumValue);
+
+                    Item item;
+                    switch (itemChoice)
+                    {
+                        case 1: item = new Armor(); break;
+                        case 2: item = new Weapon(); break;
+                        case 3: item = new Magic(); break;
+                        case 4: item = new Potion(); break;
+                        default: throw new Exception("Invalid item choice");
+                    }
                 }
+                else if (currentHeroTile == 'M')
+                { 
+                    Monster monster = new Monster();
+                }
+
+                map.GameMap[tempHeroCoordinatesY, tempHeroCoordinatesX] = tempHeroTile;
+                map.GameMap[hero.CurrentYPosition, hero.CurrentXPosition] = currentHeroTile;
             }
         }
   
