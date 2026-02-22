@@ -65,12 +65,46 @@ namespace MythicHunter2
                         case 4: item = new Potion(); break;
                         default: throw new Exception("Invalid item choice");
                     }
+
+                    hero.Inventory.Add(item);
                 }
                 else if (currentHeroTile == 'M')
-                { 
+                {
+                    tempHeroTile = '.';
+                    currentHeroTile = 'H';
                     Monster monster = new Monster();
 
-                    if(hero.)
+                    if (hero.Inventory.Count > 0)
+                    {
+                        Console.WriteLine("Which item do you want to use for the combat?");
+                        for (int i = 0; i < hero.Inventory.Count; i++)
+                        {
+                            Console.WriteLine($"{i + 1}. {hero.Inventory[i].GetType()}");
+                        }
+                        Console.WriteLine($"{hero.Inventory.Count + 1}. I don't want to use an item");
+
+                        userInput = Console.ReadLine();
+                        
+                        if (int.TryParse(userInput, out int choice))
+                        {
+                            if (choice >= 1 && choice <= hero.Inventory.Count)
+                            { 
+                                hero.Inventory[choice - 1].ActivateSpecialEffect(hero); 
+                            }
+                            else if (choice == hero.Inventory.Count + 1)
+                            { 
+                                Console.WriteLine("You chose not to use an item."); 
+                            }
+                            else 
+                            {
+                                Console.WriteLine("Invalid choice.");
+                            } 
+                        }
+                        else 
+                        {
+                            Console.WriteLine("Please enter a valid number."); 
+                        }
+                    }
                 }
 
                 map.GameMap[tempHeroCoordinatesY, tempHeroCoordinatesX] = tempHeroTile;
