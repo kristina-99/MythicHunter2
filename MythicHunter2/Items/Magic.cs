@@ -10,7 +10,7 @@ namespace MythicHunter2.Items
     {
         public Magic() : base()
         {
-
+            base.Name = "Magic";
         }
 
         public override void ActivateSpecialEffect(Hero hero)
