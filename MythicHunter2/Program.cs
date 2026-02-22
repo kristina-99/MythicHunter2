@@ -69,11 +69,15 @@ namespace MythicHunter2
                 else if (currentHeroTile == 'M')
                 { 
                     Monster monster = new Monster();
+
+                    if(hero.)
                 }
 
                 map.GameMap[tempHeroCoordinatesY, tempHeroCoordinatesX] = tempHeroTile;
                 map.GameMap[hero.CurrentYPosition, hero.CurrentXPosition] = currentHeroTile;
             }
+
+            
         }
   
     }

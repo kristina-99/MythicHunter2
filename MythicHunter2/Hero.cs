@@ -76,6 +76,14 @@ namespace MythicHunter2
             }
         }
 
+        public List<Item> Inventory
+        {
+            get
+            { 
+                return inventory;
+            }
+        }
+
         public Hero()
         {
             this.Power = 10;
