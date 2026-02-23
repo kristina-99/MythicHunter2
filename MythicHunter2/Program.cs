@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MythicHunter2;
 using MythicHunter2.Items;
 
 namespace MythicHunter2
@@ -74,45 +75,82 @@ namespace MythicHunter2
                     currentHeroTile = 'H';
                     Monster monster = new Monster();
 
-                    if (hero.Inventory.Count > 0)
-                    {
-                        Console.WriteLine("Which item do you want to use for the combat?");
-                        for (int i = 0; i < hero.Inventory.Count; i++)
-                        {
-                            Console.WriteLine($"{i + 1}. {hero.Inventory[i].GetType()}");
-                        }
-                        Console.WriteLine($"{hero.Inventory.Count + 1}. I don't want to use an item");
-
-                        userInput = Console.ReadLine();
-                        
-                        if (int.TryParse(userInput, out int choice))
-                        {
-                            if (choice >= 1 && choice <= hero.Inventory.Count)
-                            { 
-                                hero.Inventory[choice - 1].ActivateSpecialEffect(hero); 
-                            }
-                            else if (choice == hero.Inventory.Count + 1)
-                            { 
-                                Console.WriteLine("You chose not to use an item."); 
-                            }
-                            else 
-                            {
-                                Console.WriteLine("Invalid choice.");
-                            } 
-                        }
-                        else 
-                        {
-                            Console.WriteLine("Please enter a valid number."); 
-                        }
-                    }
+                    bool heroWins = Combat(hero, monster);
                 }
-
                 map.GameMap[tempHeroCoordinatesY, tempHeroCoordinatesX] = tempHeroTile;
                 map.GameMap[hero.CurrentYPosition, hero.CurrentXPosition] = currentHeroTile;
             }
 
-            
+
         }
-  
+        public static bool Combat(Hero hero, Monster monster)
+        {
+            if (hero.Inventory.Count > 0)
+            {
+                string userInput = Console.ReadLine();
+
+                Console.WriteLine("Which item do you want to use for the combat?");
+                for (int i = 0; i < hero.Inventory.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {hero.Inventory[i].Name}");
+                }
+                Console.WriteLine($"{hero.Inventory.Count + 1}. I don't want to use an item");
+
+                userInput = Console.ReadLine();
+
+                if (int.TryParse(userInput, out int choice))
+                {
+                    if (choice >= 1 && choice <= hero.Inventory.Count)
+                    {
+                        hero.Inventory[choice - 1].ActivateSpecialEffect(hero);
+                    }
+                    else if (choice == hero.Inventory.Count + 1)
+                    {
+                        Console.WriteLine("You chose not to use an item.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid choice.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid number.");
+                }
+            }
+
+            while (hero.Health > 0 && monster.Health > 0)
+            {
+                monster.Health -= hero.Power;
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"The hero has attacked the monster. The monster has {monster.Health} healthpoints left.");
+                Console.Clear();
+                if (monster.Health <= 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    hero.Health -= monster.Power;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"The moster has attacked the hero and the hero has {hero.Health} healthpoints left.");
+                    Console.Clear();
+                }
+                if (hero.Health <= 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+
     }
 }
+
+
+    
+
+    
+
