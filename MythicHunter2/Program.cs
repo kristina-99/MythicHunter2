@@ -129,13 +129,12 @@ namespace MythicHunter2
                 {
                     return true;
                 }
-                else
-                {
-                    hero.Health -= monster.Power;
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"The moster has attacked the hero and the hero has {hero.Health} healthpoints left.");
-                    Console.Clear();
-                }
+
+                hero.Health -= monster.Power;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"The monster attacked the hero. Hero HP: {hero.Health}");
+                Console.ResetColor();
+
                 if (hero.Health <= 0)
                 {
                     return false;
