@@ -76,9 +76,19 @@ namespace MythicHunter2
                     Monster monster = new Monster();
 
                     bool heroWins = Combat(hero, monster);
+                    if (heroWins)
+                    {
+                        Console.WriteLine("Congratulations hero, you have won!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("The hero has lost the game! Try harder next time.");
+                    }
+                    break;
                 }
                 map.GameMap[tempHeroCoordinatesY, tempHeroCoordinatesX] = tempHeroTile;
                 map.GameMap[hero.CurrentYPosition, hero.CurrentXPosition] = currentHeroTile;
+                Console.Clear();
             }
 
 
@@ -87,7 +97,7 @@ namespace MythicHunter2
         {
             if (hero.Inventory.Count > 0)
             {
-                string userInput = Console.ReadLine();
+                string userInput;
 
                 Console.WriteLine("Which item do you want to use for the combat?");
                 for (int i = 0; i < hero.Inventory.Count; i++)
@@ -124,7 +134,7 @@ namespace MythicHunter2
                 monster.Health -= hero.Power;
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"The hero has attacked the monster. The monster has {monster.Health} healthpoints left.");
-                Console.Clear();
+                Console.ResetColor();
                 if (monster.Health <= 0)
                 {
                     return true;
